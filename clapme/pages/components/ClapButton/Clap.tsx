@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react"
 
 import { Container, ButtonContainer } from './styled';
+import clap from '../../../public/clap.svg'
 
 export default function Clap() {
     const [count, setCount] = useState(0);
@@ -16,7 +17,9 @@ export default function Clap() {
     return (
         <Container>
             <ButtonContainer>
-                <button onClick={eventHandler}>Clap</button>
+                <button onClick={eventHandler}>
+                    <img src={clap}></img>
+                </button>
             </ButtonContainer>
         </Container>
     )
