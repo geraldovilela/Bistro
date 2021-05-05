@@ -1,8 +1,8 @@
-version: "3.7"
+version: "3.8"
 
 services:
     database_backendbistro:
-        image: postgres
+        image: postgres:latest
         container_name: database_backendbistro
         ports: 
             - 5432:5432
@@ -11,10 +11,10 @@ services:
             - POSTGRES_USER=docker
             - POSTGRES_PASSWORD=root
             - POSTGRES_DB=teste_bistro_clap
+            
         volumes: 
             - pgdata:/data/postgres
-        networks:
-            - backend
+        
     app:
         build: .
         container_name: backendbistro
@@ -22,12 +22,10 @@ services:
             - 3333:3333
         volumes: 
             - .:/usr/app
-        networks:
-            - backend    
-
-networks: 
-    backend:
-        driver: bridge
+        links:
+            - database_backendbistro
+        depends_on: 
+            - database_backendbistro   
 volumes: 
     pgdata:
         driver: local
