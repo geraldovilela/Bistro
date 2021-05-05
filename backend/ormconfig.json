@@ -1,0 +1,8 @@
+{
+    "type":"postgres",
+    "host":"database_backendbistro",
+    "port":5432,
+    "username":"docker",
+    "password":"root",
+    "database":"teste_bistro_clap"
+}
