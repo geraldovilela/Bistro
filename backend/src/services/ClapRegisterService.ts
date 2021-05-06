@@ -1,20 +1,20 @@
-import { Clap } from "../Model/Clap";
-
+import { getCustomRepository } from "typeorm";
+import ClapRepository from '../Repository/ClapRepository'
 interface ClapDTO {
     IdUser: number;
     count: number;
-    IdArtigo: String;
+    IdArtigo: string;
 }
 
 class ClapRegisterService {
-
+   
     async execute({ IdArtigo, IdUser, count }: ClapDTO) {
-        const clap = new Clap({
-            IdArtigo, 
-            IdUser,
-            count
-        });
-        return clap;
+        const ClapRepo = getCustomRepository(ClapRepository);
+        const resp = ClapRepo.create({
+            IdArtigo, IdUser, count
+        })
+        await ClapRepo.save(resp);
+        return resp;
     }
 }
 
