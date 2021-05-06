@@ -1,14 +1,15 @@
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
+@Entity("Clap")
 class Clap {
+    @Column()
     IdUser: number;
+    @Column()
     count: number;
-    IdArtigo: String
-
-    constructor({ IdArtigo, IdUser, count }: Clap) {
-        this.IdUser = IdUser;
-        this.count = count
-        this.IdArtigo = IdArtigo;
-    }
+    @PrimaryColumn()
+    IdArtigo: string
+    @CreateDateColumn()
+    created_at?: Date
 }
 
-export { Clap };
+export default Clap;

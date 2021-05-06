@@ -5,6 +5,7 @@
     "username":"docker",
     "password":"root",
     "database":"teste_bistro_clap",
+    "entities":["./src/Model/*.ts"],
     "migrations":["./src/Database/Migration/*.ts"],
     "cli":{
         "migrationsDir":"./src/Database/Migration"
